@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*.router-link-active{*/
+            /*font-size:20px;*/
+            /*color:#f00;*/
+            /*text-decoration: none;*/
+        /*}*/
+        .active{
+            font-size:20px;
+            color:#f00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <router-link to="/collection">collection</router-link>
+    <router-link to="/detail">detail</router-link>
+    <router-link to="/order">order</router-link>
+    <div>
+        <router-view></router-view>
+    </div>
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+    //1.组件
+    var Collection=Vue.component('my-collect',{
+        template:`
+           <div>
+           <h1>这是收藏页</h1>
+           </div>
+        `
+    });
+    var Detail=Vue.component('my-detail',{
+        template:`
+           <div>
+           <h1>这是详情页</h1>
+           </div>
+        `
+    });
+    var Order=Vue.component('my-order',{
+        template:`
+           <div>
+           <h1>这是订单页</h1>
+           </div>
+        `
+    });
+
+    //配置路由
+    const myRoutes=[
+        {path:'/collection',component:Collection},
+        {path:'/detail',component:Detail},
+        {path:'/order',component:Order},
+        {path:'/',component:Order}
+    ];
+
+    //创建路由实例
+    var myRouter=new VueRouter({
+        routes:myRoutes,
+        linkActiveClass:'active'
+//        mode:'history'
+    });
+
+    new Vue({
+        el: '#app',
+        router:myRouter
+    })
+</script>
+</body>
+</html>

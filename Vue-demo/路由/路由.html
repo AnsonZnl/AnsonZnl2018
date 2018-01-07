@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>路由</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.min.css">
+</head>
+
+<body>
+<div id="app">
+
+<!--
+    路由
+    作用：实现一个SPA应用
+     SPA：sinle page appliceation(单页面应用)
+     引入vue-router.js 文件
+     1.写相应的组件
+     2.配置路由
+     3.创建一个路由实例
+     4.把路由实例挂载到Vue实例上
+     5.
+     -->
+    <router-link to="/home">home</router-link>
+    <router-link to="/detail">detail</router-link>
+    <!--<router-link>detail</router-link>  == a-->
+<div>
+    <router-view></router-view>
+</div>
+
+</div>
+
+    <!-- JavaScript -->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script>
+//        1.写相应的组件
+        var Home=Vue.component("com-home",{
+            template:
+            `
+                <h1>
+                    主页
+                </h1>
+                `
+        });
+        var Detail=Vue.component("com-detall",{
+            template:
+            `
+                <h1>
+                    详情页
+                </h1>
+                `
+        });
+//        2.配置路由
+        const myRoutes=[
+            {path:"/home",component:Home},
+            {path:"/detail",component:Detail},
+            {path:"/",component:Home}
+//            const  常量
+//            path 路径
+//            {path:"/",component:Home} 刚打开页面就出来Hmoe
+        ];
+//        3. 创建一个路由实例
+        var myRouter=new VueRouter({
+            routes:myRoutes
+//            routes 配置路由的名字
+
+        });
+//       4.把路由实例挂载到Vue实例上
+        new Vue({
+            el:"#app",
+            router:myRouter
+//            router  对应挂载的路由实例
+        });
+    </script>
+</body>
+
+</html>

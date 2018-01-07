@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <my-hello>
+        <ul slot="s1">
+            <li>aaaa</li>
+            <li>bbbb</li>
+            <li>cccc</li>
+        </ul>
+        <ol slot="s2">
+            <li>1111</li>
+            <li>2222</li>
+            <li>3333</li>
+        </ol>
+    </my-hello>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    //slot向显示组件之间的内容，直接在组件中放置一个slot标签就可以了
+    Vue.component('my-hello',{
+        template:`
+            <div>
+               <slot name="s2"></slot>
+                <h1>welcome</h1>
+                <slot name="s1"></slot>
+            </div>
+        `
+    })
+    new Vue({
+        el: '#app'
+    })
+</script>
+</body>
+</html>

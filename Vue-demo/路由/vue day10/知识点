@@ -1,0 +1,84 @@
+路由:（vue-router）
+  简介
+    使用Vue.js开发SPA(Single Page Spa)单页面应用
+    根据不同url地址，显示不同的内容，但显示在同一个页面中，称为单页面应用
+
+  参考：https://router.vuejs.org/zh-cn
+
+  命令行：cnpm install vue-router -S 下载路由
+
+
+基本用法
+
+布局：
+
+传参的两种形式
+    a.查询字符串login?name=tom&pwd=123
+    {{$route.query}}
+    b.rest风格：register/alice/456
+    {{$route.params}}
+    $route.path   获取url
+
+
+//路由实例的方法：
+     route.push()添加路由  功能上与 <route-link>相同
+
+一、SPA的概述
+
+SPA（single page application）单页面应用程序，在一个完成的应用或者站点中，只有一个完整的html页面，这个页面有一个容器，可以把需要加载的代码片段插入到该容器中。
+
+
+SPA的工作原理：
+http://127.0.0.1/index.html#/start
+①根据地址栏中url解析完整的页面：index.html
+加载index.html
+②根据地址栏中url解析#后的路由地址： start
+根据路由地址，去在当前应用的配置中 找该路由地址的配置对象去查找该路由地址 所对应的模板的页面地址
+发起异步请求加载该页面地址
+③把请求来的数据加载到指定的容器中
+
+
+二、通过VueRouter来实现一个SPA的基本步骤
+①引入对应的vue-router.js
+②指定一个盛放代码片段的容器
+<router-view></router-view>
+③创建业务所需要的各个组件
+④配置路由词典
+	每一个路由地址的配置对象（要加载哪个页面...）
+	const myRoutes = [
+		{path:'/myLogin',component:TestLogin},
+		{path:'/myRegister',component:TestRegister}
+	]
+	const myRouter =  new VueRouter({
+		routes:myRoutes
+	})
+	new Vue({
+		router:myRouter
+	})
+⑤测试
+	在地址栏中 输入对应的不同的路由地址 确认是否能够加载对应的组件
+
+
+练习：
+	需要大家创建一个SPA，这个SPA有3个组件，分别对应的是collect/detail/order
+	功能需求：
+	在地址栏中路由地址是:
+	/myColllect --> 收藏页组件
+	/myDetail --> 详情页组件
+	/myOrder --> 订单页组件
+
+
+三、通过VueRouter来实现组件之间的跳转
+提供了3种方式实现跳转：
+①直接修改地址栏中的路由地址
+
+②通过router-link实现跳转
+<router-link to="/myRegister">注册</router-link>
+
+③通过js的编程的方式
+ jumpToLogin: function () {
+			this.$router.push('/myLogin');
+		}
+
+
+

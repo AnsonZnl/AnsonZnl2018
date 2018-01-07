@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>路由的嵌套</title>
+    <style>
+        .router-link-active{
+            font-size: 20px;
+            color:#f00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+      <li><router-link to="/home">home</router-link></li>
+      <li><router-link to="/user">user</router-link></li>
+    </ul>
+    <div>
+        <router-view></router-view>
+    </div>
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+//1.定义组件
+ var Home={
+     template:`
+        <div>
+            <h1>这是主页</h1>
+        </div>
+     `
+ };
+ var User={
+//     template:'#user'
+     template:
+             `
+        <div>
+        <h1>这是用户也页</h1>
+        <ul>
+           <li>
+               <router-link to="/user/login">登陆</router-link>
+           </li>
+            <li>
+               <router-link to="/user/register">注册</router-link>
+            </li>
+        </ul>
+        <router-view></router-view>
+
+    </div>
+     `
+ };
+var Login={
+    template:`<h3>这是登陆页面</h3>`
+};
+var Register={
+    template:`<h3>这是注册页面</h3>`
+};
+
+ //2.配置路由
+
+ const myRoutes=[
+     {
+          path:'/home',
+         component:Home
+     },
+     {
+         path:'/user',
+         component:User,
+         children:[
+             {path:'login',component:Login},
+             {path:'register',component:Register}
+         ]
+     }
+ ];
+
+ //3.创建vue实例
+ var myRouter=new VueRouter({
+     routes:myRoutes,
+     mode:'history'
+ });
+ //把路由挂载到vue实例上
+    new Vue({
+        el: '#app',
+        router:myRouter
+    })
+</script>
+</body>
+</html>

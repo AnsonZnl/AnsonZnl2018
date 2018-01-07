@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>路由练习</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.min.css">
+    <style>
+        /*.router-link-active{*/
+            /*color: aqua;*/
+            /*list-style: none;*/
+            /*font-size: 20px;*/
+        /*}*/
+        .active{
+            color: aqua;
+            list-style: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+
+    <router-link to="/sc">收藏</router-link>
+    <router-link to="/dd">订单</router-link>
+    <router-link to="/xq">详情</router-link>
+<div>
+
+    <router-view></router-view>
+</div>
+</div>
+
+    <!-- JavaScript -->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script>
+
+
+//        <!--写相应的组件-->
+        var ShouChang=Vue.component("my-sc",{
+            template:
+            `
+                <h1>
+                    收藏页
+                </h1>
+            `
+        });
+        var DingDan=Vue.component("my-dd",{
+            template:
+            `
+                <h1>
+                    订单页
+                </h1>
+            `
+        });
+        var XiangQing=Vue.component("my-xq",{
+            template:
+            `
+                <h1>
+                    详情页
+                </h1>
+            `
+        });
+//      配置路由
+        const myRoutes=[
+            {path:"/sc",component:ShouChang},
+            {path:"/dd",component:DingDan},
+            {path:"/xq",component:XiangQing},
+            {path:"/",component:ShouChang}
+            //            const  常量
+//            path 路径
+//            {path:"/",component:Home} 刚打开页面就出来Hmoe
+        ];
+//创建一个路由实例
+        var myRouter=new VueRouter({
+            routes:myRoutes,
+            linkActiveClass:'active'
+//            linkActiveClass:'active'  自己设置class
+//            mode:'history'
+//            routes 配置路由的名字
+//             mode:'history' 换路径 网页地址
+        });
+//把路由实例挂载到Vue实例上
+        new Vue({
+            el:"#app",
+            router:myRouter
+//            router  对应挂的路由实例
+        })
+    </script>
+</body>
+
+</html>

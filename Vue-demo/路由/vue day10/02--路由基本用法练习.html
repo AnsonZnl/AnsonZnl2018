@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/collection">收藏页</router-link>
+        <router-link to="/detail">详情页</router-link>
+        <router-link to="/order">订单页</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+    //1.创建组件
+    var collection=Vue.component('my-collection',{
+        template:`<h1>这是收藏页面</h1>`
+    });
+
+    var detail=Vue.component('my-detail',{
+        template:`<h1>这是详情页</h1>`
+    });
+
+    var order=Vue.component('my-order',{
+        template:`<h1>这是订单页</h1>`
+    });
+
+    //2.配置路由
+    var myRoutes=[
+        {path:'/collection',component:collection},
+        {path:'/detail',component:detail},
+        {path:'/order',component:order},
+        {path:'/',component:order}
+
+    ];
+
+    //4.创建路由实例
+
+    var myRouter=new VueRouter({
+        routes:myRoutes
+    });
+
+    //5.把路由挂载到Vue实例上
+    new Vue({
+        el: '#app',
+        router:myRouter
+    })
+</script>
+</body>
+</html>

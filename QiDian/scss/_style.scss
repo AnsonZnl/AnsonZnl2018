@@ -1,0 +1,26 @@
+header {
+  height: 1rem;
+  padding-top: .6875rem;
+  padding-bottom: .625rem;
+  border-bottom: 1px solid #f0f1f2;
+  background-color: #fff;
+  border-bottom: none;
+  .logo-a{
+    display: block;
+    width: 5.625rem;
+    padding: 0 1rem;
+    .logo {
+    font-size: 0.3rem;
+    width: inherit;
+    height: 1.125rem;
+    margin: auto;
+    color: #000;
+    //background: url(https://qidian.gtimg.com/qdm/img/logo-qdm.02fc8.svg) no-repeat center;
+    background-size: 100%;
+  }
+  }
+
+}
+h2{
+  font-size: 2rem;
+}

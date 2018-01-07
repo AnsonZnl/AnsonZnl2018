@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/home">home</router-link>
+    <router-link to="/detail">detail</router-link>
+  <div>
+      <router-view></router-view>
+  </div>
+</div>
+<script src="js/vue.js"></script>
+<!--1.引入文件-->
+<script src="js/vue-router.js"></script>
+<script>
+    //2.写相应的组件
+    var Home=Vue.component('home',{
+        template:`<h1>这是主页</h1>`
+    });
+    var Detail=Vue.component('detail',{
+        template:`<h1>这是详情页</h1>`
+    });
+
+    //3.配置路由
+    const myRoutes=[
+        {path:'/home',component:Home},
+        {path:'/detail',component:Detail},
+        {path:'/',component:Home}
+    ];
+
+    //4.创建路由实例
+    var myRouter=new VueRouter({
+        routes:myRoutes
+    });
+
+    //5.把路由实例挂载到VUE实例上
+    new Vue({
+        el: '#app',
+        router:myRouter
+    })
+</script>
+</body>
+</html>

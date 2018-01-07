@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*.router-link-active{*/
+            /*font-size: 20px;*/
+            /*color:#f00;*/
+            /*text-decoration: none;*/
+        /*}*/
+        .active{
+            font-size: 20px;
+            color:#f00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <router-link to="/home">home</router-link>
+    <router-link to="/detail">detail</router-link>
+    <p>
+        <router-view></router-view>
+    </p>
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+   //定义相应的组件
+   var home=Vue.component('home',{
+       template:`<h1>这是主页</h1>`
+   });
+   var detail=Vue.component('detail',{
+       template:`<h1>这是详情页</h1>`
+   });
+
+   //配置路由
+   const myRoutes=[
+       {path:"/home",component:home},
+       {path:"/detail",component:detail},
+       {path:"/",component:home}//默认刚打开页面就在主页
+   ];
+
+   //设置路由实例
+
+   const myRouter=new VueRouter({
+           routes:myRoutes,
+//           mode:'history',//vue-router 默认hash模式,现修改为history模式
+           linkActiveClass:'active'
+   });
+
+   //把路由挂载到vue实例上
+    new Vue({
+        el: '#app',
+        router:myRouter
+    })
+</script>
+</body>
+</html>

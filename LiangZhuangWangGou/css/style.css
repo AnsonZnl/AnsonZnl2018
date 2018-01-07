@@ -1,0 +1,122 @@
+/*--通用样式--*/
+body, div, h1, h2, h3, h4, h5, h6, hr, p,
+blockquote, dl, dt, dd, ul, ol, li, pre,
+form, fieldset, legend, button, input,
+textarea, th, td, em, i, img {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑, 宋体, Arial;
+
+}
+
+html, body {
+    width: 100%;
+    font-size: 12px;
+}
+
+.main-centers {
+    width: 1200px;
+    margin: auto;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.bg-color {
+    background-color: #f7f7f7;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    outline: 0 none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+}
+.font24 {
+    font-size: 24px;
+}
+
+.font20{
+    font-size: 20px;
+}
+.font18{
+    font-size: 18px;
+}
+.font16 {
+    font-size: 16px;
+}
+.font14 {
+    font-size: 14px;
+}
+.font12 {
+    font-size: 12px;
+}
+.fwb {
+    font-weight: bold;
+}
+
+.color9 {
+    color: #999;
+}
+
+.color6 {
+    color: #666;
+}
+
+.red {
+    color: #F00;
+}
+.none{
+    display: none;
+}
+.block{
+    display: block;
+}
+.inline-block{
+    display: inline-block;
+}
+.mr10{
+    margin-right: 10px;
+}
+.mr20{
+    margin-right: 20px;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.letter1{
+    letter-spacing:1px;
+}
+.letter2{
+    letter-spacing:2px;
+}
+.letter4{
+    letter-spacing:4px;
+}
